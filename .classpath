@@ -9,5 +9,6 @@
 	<classpathentry kind="src" path="05Vorlesungs"/>
 	<classpathentry kind="src" path="06Vorlesung"/>
 	<classpathentry kind="src" path="07Vorlesungs"/>
+	<classpathentry kind="src" path="HausaufgabeChat"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
