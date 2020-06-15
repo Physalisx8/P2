@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 
 public class EditAlarmActivity extends AppCompatActivity {
@@ -65,10 +66,14 @@ public class EditAlarmActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     alarmClock.setHour(timepicker.getHour());
                     alarmClock.setMinute(timepicker.getMinute());
+                    Log.i("Logbuch", alarmClock.toString());
+                    WriterService.writeObject(EditAlarmActivity.this, alarmClock);
+                    Intent intent = new Intent(EditAlarmActivity.this, MainActivity.class);
+                    startActivity(intent);
                 }
             });
 
-        public void setSwitch(Switch editSwitch) {
+
         editSwitch.setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked)->{
             if (alarmClock.isAlarmOn()) {
                 alarmClock.setAlarmOn(false);
@@ -76,29 +81,22 @@ public class EditAlarmActivity extends AppCompatActivity {
                 alarmClock.setAlarmOn(true);
             }
         });
-        }}
+        }
 
     @SuppressLint("ResourceAsColor")
         public void setColor(Button button, int id){
             button.setOnClickListener(lambda ->{
+                Toast.makeText(EditAlarmActivity.this, "Button wurde geklickt", Toast.LENGTH_LONG).show();
                 alarmClock.toggleDay(id);
                 if (alarmClock.getDays(id)) {
-
-                    button.setBackgroundColor(R.color.orange);
+                    button.setTextColor(ContextCompat.getColor(EditAlarmActivity.this,R.color.orange));
                 }else{
-                    button.setBackgroundColor(R.color.white);
+                    button.setTextColor(ContextCompat.getColor(EditAlarmActivity.this,R.color.white));
                 }
             });
         }
 
-        public void androidData(Button button){
-        button.setOnClickListener(v->{
-            Log.i("Logbuch", alarmClock.toString());
-            WriterService.writeObject(EditAlarmActivity.this, alarmClock);
-            Intent intent = new Intent(EditAlarmActivity.this, MainActivity.class);
-            startActivity(intent);
-        });
-        }
+
             }
 
 

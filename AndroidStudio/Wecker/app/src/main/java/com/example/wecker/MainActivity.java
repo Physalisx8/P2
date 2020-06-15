@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        timeView = findViewById(R.id.editText);
         ImageButton imageButton =  findViewById(R.id.plusButton);
         imageButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -42,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
         Object obj = ReadService.readObject(MainActivity.this);
         if(obj != null){
-            Log.i("Hallo", obj.toString() + "main");
+            Log.i("Toggle", obj.toString() + "main");
             if(obj instanceof AlarmClock){
                 alarmClock=(AlarmClock) obj;
                 timeView.setText(alarmClock.getHour()+":"+alarmClock.getMinute());

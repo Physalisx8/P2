@@ -1,5 +1,7 @@
 package com.example.wecker;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.Arrays;
 
@@ -71,6 +73,7 @@ public class AlarmClock implements Serializable {
 
     public void toggleDay(int id) {
         days[id] = !days[id];
+        Log.i("Toggle", "you've been toogled" + days[id]);
     }
 
     public boolean getDays( int id){
